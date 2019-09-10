@@ -41,8 +41,10 @@ function App() {
         <input name='name' placeholder='Add Todo Item' value={newTodo} onChange={handleInput} />
         <button type='submit'>Add Todo</button>
       </form>
-      <button onClick={handleClear}>Clear Completed</button>
-      {state.todoArray.map(item => <TodoCard key={item.id} todo={item} handleComplete={handleComplete} />)}
+      <button className="clear-btn" onClick={handleClear}>Clear Completed</button>
+      <div className="card-grid">
+        {state.todoArray.map(item => <TodoCard key={item.id} todo={item} handleComplete={handleComplete} />)}
+      </div>
     </div>
   );
 }
