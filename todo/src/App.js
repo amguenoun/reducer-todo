@@ -26,7 +26,7 @@ function App() {
   }
 
   const handleComplete = (id) => {
-    dispatch({ type: 'TOGGLE_COMPLETE', payload: { id } });
+    dispatch({ type: 'TOGGLE_COMPLETE', payload: { itemID: id } });
   }
 
   return (

@@ -7,6 +7,18 @@ export const todoReducer = (state, action) => {
         case 'ADD_TODO': {
             return { todoArray: [...state.todoArray, action.payload] }
         }
+        case 'TOGGLE_COMPLETE': {
+            return {
+                todoArray: state.todoArray.map(item => {
+                    if (item.id === action.payload.itemID) {
+                        return { ...item, completed: !item.completed };
+                    }
+                    else {
+                        return item;
+                    }
+                })
+            }
+        }
         default: return state;
     }
 } 
