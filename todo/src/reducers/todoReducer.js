@@ -1,5 +1,11 @@
+import moment from 'moment';
+
 export const initialState = {
-    todoArray: [{ id: 0, name: 'Clean the backyard', completed: false }],
+    todoArray: [{
+        id: 0, name: 'Clean the backyard',
+        completed: false, timeCreated: moment().format('MMMM Do YYYY, h:mm:ss a'),
+        timeCompleted: null
+    }],
 }
 
 export const todoReducer = (state, action) => {
@@ -11,7 +17,7 @@ export const todoReducer = (state, action) => {
             return {
                 todoArray: state.todoArray.map(item => {
                     if (item.id === action.payload.itemID) {
-                        return { ...item, completed: !item.completed };
+                        return { ...item, completed: !item.completed, timeCompleted: !item.completed ? moment().format('MMMM Do YYYY, h:mm:ss a') : null };
                     }
                     else {
                         return item;

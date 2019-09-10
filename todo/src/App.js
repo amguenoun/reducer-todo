@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from 'react';
+import moment from 'moment';
 
 //import reducer
 import { initialState, todoReducer } from './reducers/todoReducer';
@@ -13,6 +14,7 @@ import './App.css';
 function App() {
   const [newTodo, setNewTodo] = useState('');
   const [state, dispatch] = useReducer(todoReducer, initialState);
+  console.log(state);
 
   const handleInput = (e) => {
     setNewTodo(e.target.value)
@@ -20,7 +22,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_TODO', payload: { id: Date.now(), name: newTodo, completed: false } });
+    dispatch({ type: 'ADD_TODO', payload: { id: Date.now(), name: newTodo, completed: false, timeCreated: moment().format('MMMM Do YYYY, h:mm:ss a'), timeCompleted: null } });
     setNewTodo('');
   }
 
@@ -29,7 +31,7 @@ function App() {
   }
 
   const handleClear = () => {
-    dispatch({ type: 'CLEAR_COMPLETED' })
+    dispatch({ type: 'CLEAR_COMPLETED' });
   }
 
   return (
