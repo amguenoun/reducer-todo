@@ -28,6 +28,7 @@ function App() {
         <input name='name' placeholder='Add Todo Item' value={newTodo} onChange={handleInput} />
         <button type='submit'>Add Todo</button>
       </form>
+      {state.todoArray.map(item => <h2>{item.name}</h2>)}
     </div>
   );
 }
