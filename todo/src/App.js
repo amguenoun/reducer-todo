@@ -13,7 +13,6 @@ import './App.css';
 function App() {
   const [newTodo, setNewTodo] = useState('');
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  console.log(state);
 
   const handleInput = (e) => {
     setNewTodo(e.target.value)
@@ -29,6 +28,10 @@ function App() {
     dispatch({ type: 'TOGGLE_COMPLETE', payload: { itemID: id } });
   }
 
+  const handleClear = () => {
+    dispatch({ type: 'CLEAR_COMPLETED' })
+  }
+
   return (
     <div className="App">
       <h1>React Todo App</h1>
@@ -36,6 +39,7 @@ function App() {
         <input name='name' placeholder='Add Todo Item' value={newTodo} onChange={handleInput} />
         <button type='submit'>Add Todo</button>
       </form>
+      <button onClick={handleClear}>Clear Completed</button>
       {state.todoArray.map(item => <TodoCard key={item.id} todo={item} handleComplete={handleComplete} />)}
     </div>
   );
