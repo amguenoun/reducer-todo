@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.card-grid {
+  display:flex;
+  flex-wrap:wrap;
+  margin: 0 auto;
+  width: 90%;
+  justify-content:center;
+}
+
+.card {
+  margin: 2% !important;
+  width: 30%;
+}
+
+.clear-btn {
+  margin:2% 0%;
+}
+
+.card button {
+  margin: 2%;
+  padding: 1% 0%;
+}
